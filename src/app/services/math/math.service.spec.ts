@@ -22,4 +22,10 @@ describe('MathService', () => {
     })
   });
 
+  it('math.service.filterMultipleThree should return "" for all non multiples of three in the range', () => {
+    service.filterMultipleThree(constants.nonMultiplesOfThree).subscribe((result: FlowResult) => {
+      expect(result.stringResult).toEqual("");
+    })
+  });
+
 });
