@@ -8,5 +8,5 @@ export const constants = {
   multiplesOfFive: range(1,100).pipe(filter(number => number % 5 === 0)),
   nonMultiplesOfFive: range(1,100).pipe(filter(number => number % 5 !== 0)),
   multiplesOfThreeAndFive: range(1,100).pipe(filter(number => number % 3 === 0 && number % 5 === 0)),
-  nonMultiplesOfEitherThreeAndFive: range(1,100).pipe(filter(number => number % 3 !== 0 && number % 5 !== 0))
+  nonMultiplesOfNeitherThreeAndFive: range(1,100).pipe(filter(number => number % 3 !== 0 && number % 5 !== 0))
 };
