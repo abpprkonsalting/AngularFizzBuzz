@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { map } from "rxjs/operators";
+import { from } from "rxjs";
 
 import { MathService } from './math.service';
 import { constants } from '../../app.constants';
@@ -62,6 +63,16 @@ describe('MathService', () => {
     constants.nonMultiplesOfNeitherThreeAndFive.pipe(map((number: number) => new FlowResult (number)))
               .pipe(service.filterNonMultiples).subscribe((result: FlowResult) => {
               expect(result.stringResult).toEqual(result.number.toString());
+            });
+  });
+
+  it('math.service.filterMultipleThree => math.service.filterMultipleFive => math.service.filterNonMultiples should not return "" for multiples of either three or five', () => {
+    const multiplesOfThree = [3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,75,78,81,84,87,90,93,96,99];
+    const multiplesOfFive = [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100];
+    const multiplesOfBoth = [...new Set([...multiplesOfThree, ...multiplesOfFive])];
+    service.filterMultipleThree(from(multiplesOfBoth)).pipe(service.filterMultipleFive)
+            .pipe(service.filterNonMultiples).subscribe((result: FlowResult) => {
+              expect(result.stringResult).not.toEqual("");
             });
   });
 
