@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { map } from "rxjs/operators";
 
 import { MathService } from './math.service';
 import { constants } from '../../app.constants';
@@ -26,6 +27,20 @@ describe('MathService', () => {
     service.filterMultipleThree(constants.nonMultiplesOfThree).subscribe((result: FlowResult) => {
       expect(result.stringResult).toEqual("");
     })
+  });
+
+  it ('math.service.filterMultipleFive should return "Buzz" for multiples of five in the range', () => {
+    constants.multiplesOfFive.pipe(map((number: number) => new FlowResult (number)))
+              .pipe(service.filterMultipleFive).subscribe((result: FlowResult) => {
+              expect(result.stringResult).toEqual("Buzz");
+            });
+  });
+
+  it ('math.service.filterMultipleFive should return "" for non multiples of five in the range', () => {
+    constants.nonMultiplesOfFive.pipe(map((number: number) => new FlowResult (number)))
+              .pipe(service.filterMultipleFive).subscribe((result: FlowResult) => {
+              expect(result.stringResult).toEqual("");
+            });
   });
 
 });
