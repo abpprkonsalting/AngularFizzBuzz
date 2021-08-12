@@ -57,4 +57,12 @@ describe('MathService', () => {
               expect(result.stringResult).toEqual("");
             });
   });
+
+  it('math.service.filterNonMultiples should return the number as string for non multiples of neither three or five', () => {
+    constants.nonMultiplesOfNeitherThreeAndFive.pipe(map((number: number) => new FlowResult (number)))
+              .pipe(service.filterNonMultiples).subscribe((result: FlowResult) => {
+              expect(result.stringResult).toEqual(result.number.toString());
+            });
+  });
+
 });
