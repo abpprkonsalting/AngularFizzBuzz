@@ -14,4 +14,11 @@ export class MathService {
   public filterMultipleThree(numbers: Observable<number>) : Observable<FlowResult> {
     return numbers.pipe(map((number) => number % 3 === 0 ? new FlowResult(number,"Fizz") : new FlowResult(number)));
   }
+
+  public filterMultipleFive(input: Observable<FlowResult>) : Observable<FlowResult> {
+    return input.pipe(map((filtered) => filtered.number % 5 === 0 ?
+                                          new FlowResult(filtered.number,filtered.stringResult+"Buzz") :
+                                          filtered));
+  }
+
 }
