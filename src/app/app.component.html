@@ -10,17 +10,13 @@
 
 <div class="content" role="main">
 
-  <input type="hidden" #selection>
-
-  <div class="card-container">
-    <button class="card card-small" (click)="selection.value = 'component'" tabindex="0">
-      <span>Print FizzBuzz</span>
-    </button>
-  </div>
-
   <!-- Terminal -->
-  <div class="terminal" [ngSwitch]="selection.value">
-      <pre *ngSwitchDefault>ng generate component xyz</pre>
+  <div class="terminal">
+    <ul>
+      <li *ngFor='let number$ of numbers$ | async'>
+        <span>{{ number$.number }} </span> <span> => </span> <span>{{ number$.stringResult}}</span>
+      </li>
+    </ul>
   </div>
 
   <svg id="clouds" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677" viewBox="0 0 2611.084 485.677">

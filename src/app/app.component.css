@@ -190,11 +190,12 @@
     text-indent: 4px;
   }
 
-  .terminal pre {
+  .terminal li {
     font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
     color: white;
     padding: 0 1rem 1rem;
     margin: 0;
+    list-style: none;
   }
 
   .circle-link {
