@@ -43,4 +43,18 @@ describe('MathService', () => {
             });
   });
 
+
+  it('math.service.filterMultipleThree => math.service.filterMultipleFive should return "FizzBuzz" for all multiples of three & five in the range', () => {
+    service.filterMultipleThree(constants.multiplesOfThreeAndFive)
+            .pipe(service.filterMultipleFive).subscribe((result: FlowResult) => {
+              expect(result.stringResult).toEqual("FizzBuzz");
+            });
+  });
+
+  it('math.service.filterMultipleThree => math.service.filterMultipleFive should return "" for all non multiples of neither three nor five in the range', () => {
+    service.filterMultipleThree(constants.nonMultiplesOfNeitherThreeAndFive)
+            .pipe(service.filterMultipleFive).subscribe((result: FlowResult) => {
+              expect(result.stringResult).toEqual("");
+            });
+  });
 });
