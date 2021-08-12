@@ -21,4 +21,8 @@ export class MathService {
                                           filtered));
   }
 
+  public filterNonMultiples(filtered: Observable<FlowResult>) : Observable<FlowResult> {
+    return filtered.pipe(map((filtered) => filtered.stringResult  !== '' ? filtered :
+                                            new FlowResult(filtered.number,filtered.number.toString())));
+  }
 }
